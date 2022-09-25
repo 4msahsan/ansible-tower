@@ -4,7 +4,7 @@
   become_method: sudo
   tasks:
   - name: latest version of all required packages installed
-    yum: 
+    yum:
       name:
         - firewalld
         - httpd
@@ -12,17 +12,17 @@
         - php
         - php-mysql
       state: latest
-
+        
   - name: firewalld enabled and running
     service:
       name: firewalld
       enabled: true
       state: started
-
+        
   - name: firewalld permits http service
     firewalld:
       service: http
-      permament: true
+      permanent: true
       state: enabled
       immediate: yes
 
@@ -31,17 +31,14 @@
       name: httpd
       enabled: true
       state: started
-
+        
   - name: mariadb enabled and running
     service:
       name: mariadb
       enabled: true
-      state: started
-
-  - name: test php page is installed
+      state: started      
+  - name:
     get_url:
-      url: "http://192.168.0.37/index.php"
-      dest: /var/www/html/index.html
-      mode: 0644  
-
-
+      url: "http://192.168.0.215/index.php"
+      dest: /var/www/html/index.php
+      mode: 0644
